@@ -1,0 +1,73 @@
+<!-- <router-outlet></router-outlet> -->
+
+<!-- ngFor, ngClass, ngStyle -->
+<h1>--- ngFor, ngClass, ngStyle ---</h1>
+<table>
+  <thead>
+    <th>Index</th>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Type</th>
+    <th>isCool</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pokemon of pokemons; let i = index">
+      <td>{{ i }}</td>
+      <td [class.cool-bool]="pokemon.isCool">{{ pokemon.id }}</td>
+      <td [style.backgroundColor]="pokemon.isStylish ? '#BF40BF' : ''">
+        {{ pokemon.name }}
+      </td>
+      <td>{{ pokemon.type }}</td>
+      <td>{{ pokemon.isCool }}</td>
+    </tr>
+    <tr *ngFor="let pokemon of pokemons; let i = index">
+      <td>{{ i }}</td>
+      <td [ngClass]="{ 'cool-bool': pokemon.isCool }">{{ pokemon.id }}</td>
+      <td [ngStyle]="{ backgroundColor: pokemon.isStylish ? '#BF40BF' : '' }">
+        {{ pokemon.name }}
+      </td>
+      <td>{{ pokemon.type }}</td>
+      <td>{{ pokemon.isCool }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ngIf -->
+<h1>--- ngIf ---</h1>
+<input type="text" [value]="pokemonName1" (input)="handleChange($event)" />
+<p>{{ pokemonName1 }}</p>
+
+<!-- <div *ngIf="!pokemonName1">
+  No Search Result found
+</div> -->
+
+<ng-container *ngIf="pokemonName1.length; then pokemonList; else noPokemon">
+</ng-container>
+
+<ng-template #pokemonList>
+  <h1>All pokemon available</h1>
+  ....
+</ng-template>
+
+<ng-template #noPokemon>
+  <h1>No pokemon available</h1>
+</ng-template>
+<!-- Template Ref Variable -->
+<h1>--- Template Ref Variable ---</h1>
+<input type="text" #pokemonName />
+<button (click)="handleClick(pokemonName.value)">Click</button>
+
+<!-- Two-way binding -->
+<h1>--- Two-way binding ---</h1>
+<input type="text" [(ngModel)]="favoriteAnimal" />
+<p>{{ favoriteAnimal }}</p>
+<!-- Property Binding -->
+<h1>--- Property Binding ---</h1>
+<h1 [innerHTML]="title1"></h1>
+<img [alt]="title1" [src]="imgSrc" />
+
+<h1>--- String interpolation ---</h1>
+<!-- String interpolation -->
+{{ title }}
+{{ numberOne + numberTwo }}
+{{ togglePokemon ? "Is Pokemon" : "not pokemon" }}

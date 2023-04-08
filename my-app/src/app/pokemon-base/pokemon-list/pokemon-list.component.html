@@ -1,0 +1,22 @@
+<table>
+  <thead>
+    <th>Id</th>
+    <th #pokemonTh>Name</th>
+    <th>Type</th>
+    <th>isCool</th>
+  </thead>
+  <tbody>
+    <app-pokemon-detail
+      #pokemonRef
+      *ngFor="let pokemon of pokemons; let i = index"
+      [detail]="pokemon"
+      (remove)="handleRemove($event)"
+    >
+      <h1>------------------------------</h1>
+      <h2>===============================</h2>
+    </app-pokemon-detail>
+  </tbody>
+  <div highlighttext>This is is highlight text</div>
+  <h2 *customif="true">Custom if true</h2>
+  <h2 *customif="false">Custom if false</h2>
+</table>
